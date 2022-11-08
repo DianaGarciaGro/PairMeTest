@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     root:{
         alignItems: 'center',
-        padding: 10
+        padding: 10,
+        flex: 1,
     },
     Logo1: {
         width: 400,
@@ -93,10 +94,10 @@ const styles = StyleSheet.create({
     answer: {
         paddingBottom: 20,
         paddingTop: 40,
-        alignContent: "center",
-        alignItems: "center",
+        width: 300,
         justifyContent: "center",
         alignSelf: "center",
+        color: '#5481b8',
     },
     row: {
         flexDirection: "row",
@@ -122,6 +123,21 @@ const styles = StyleSheet.create({
         color: '#5481b8',
         alignSelf: 'center',
         marginHorizontal: 10,
+    },
+    input: {
+        fontSize: 20,
+        color: 'black',
+        width: '80%',
+        height: 50,
+    },
+    containerCI: {
+        width: 300,
+        height: 50,
+        justifyContent: 'center', 
+        borderBottomColor: '#5481b8',
+        borderBottomWidth: 1,
+        marginBottom: 20,
+        position: 'relative',
     },
 });
 

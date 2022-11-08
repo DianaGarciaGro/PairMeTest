@@ -1,15 +1,35 @@
 import * as React from 'react';
 import {useState} from 'react';
-import { StyleSheet, Image, useWindowDimensions, View, Text, Alert, Button, TouchableOpacity } from 'react-native';
-import CustomInput from './components/CustomInput';
+import { Image, useWindowDimensions, View, Text } from 'react-native';
+import { Input } from '@rneui/themed';
 import CustomButton from './components/CustomButton';
 import styles from './styles';
 import { Feather } from '@expo/vector-icons';
+import { auth } from './config/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function Start({navigation}) {
     const {height} = useWindowDimensions();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+
+    const signin = () => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              if (userCredential.user.emailVerified == false){
+                  alert('Time to verify your email')
+              }else{
+                navigation.replace('Start');
+            }
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage);
+          });
+        navigation.navigate('Home')
+    }
 
     return (
         <View style={styles.root}>
@@ -25,10 +45,11 @@ export default function Start({navigation}) {
                     name="mail"
                     style={styles.icon}
                 />
-                <CustomInput
+                <Input
+                    style={styles.input}
                     placeholder="Email"
                     value={email}
-                    setValue={setEmail}/>
+                    onChangeText={text => setEmail(text)} />
             </View>
 
             <View style={styles.row}>
@@ -36,16 +57,17 @@ export default function Start({navigation}) {
                     name="lock"
                     style={styles.icon}
                 />
-            <CustomInput
+            <Input
+                style={styles.input}
                 placeholder="Password"
                 value={password}
-                setValue={setPassword}
+                onChangeText={text => setPassword(text)}
                 secureTextEntry={true}/>
             </View>
 
             <CustomButton
                 text="SIGN IN"
-                onPress={() => navigation.navigate('Home')}
+                onPress={signin}
                 type="PRIMARY"/>
 
             <CustomButton
@@ -57,7 +79,6 @@ export default function Start({navigation}) {
                 text="Forgot password?"
                 onPress={() => navigation.navigate('ForgotPassword')}
                 type="TERTIARY"/>
-
         </View>
     );
 }

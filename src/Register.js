@@ -1,15 +1,11 @@
 import React, {useState} from "react";
 import { Alert, Dimensions, Text, View } from "react-native";
-import CustomInput from "./components/CustomInput";
+import { Input } from '@rneui/themed';
 import CustomButton from "./components/CustomButton";
 import { Feather } from '@expo/vector-icons';
 import styles from "./styles";
-import {firebase} from "./config/firebase";
 import { auth } from "./config/firebase";
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth';
-
-import { doc, setDoc } from "firebase/firestore"; 
-import { db } from "./config/firebase";
 
 export default function Register({navigation}) {
     const [username, setUsername] = useState('');
@@ -57,11 +53,11 @@ export default function Register({navigation}) {
                     name="user"
                     style={styles.icon}
                 />
-                <CustomInput
+                <Input
+                    style={styles.input}
                     placeholder="Username"
-                    label="Username"
                     value={username}
-                    setValue={setUsername}
+                    onChangeText={text => setUsername(text)}
                     />
             </View>
             <View style={{flexDirection:'row', left: 20}}>
@@ -69,11 +65,11 @@ export default function Register({navigation}) {
                     name="mail"
                     style={styles.icon}
                 />
-                <CustomInput
+                <Input
+                    style={styles.input}
                     placeholder="Email"
-                    label="Email"
                     value={email}
-                    setValue={setEmail}
+                    onChangeText={text => setEmail(text)}
                     />
             </View>
             <View style={{flexDirection:'row', left: 20}}>
@@ -81,11 +77,11 @@ export default function Register({navigation}) {
                     name="lock"
                     style={styles.icon}
                 />
-                <CustomInput
+                <Input
+                    style={styles.input}
                     placeholder="Password"
-                    label="Password"
                     value={password}
-                    setValue={setPassword}
+                    onChangeText={text => setPassword(text)}
                     secureTextEntry={true}/>
             </View>
 

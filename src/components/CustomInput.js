@@ -6,7 +6,6 @@ const CustomInput = ({value, setValue, placeholder, secureTextEntry}) => {
         <View style={styles.containerCI}>
             <TextInput 
                 value ={value}
-                onChangeText={setValue}
                 placeholder={placeholder}
                 style={styles.input} 
                 secureTextEntry={secureTextEntry}
