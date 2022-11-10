@@ -1,26 +1,14 @@
-import React, {useEffect, useState } from "react";
+import React, {useState } from "react";
 import { Text, View, ScrollView } from "react-native";
 import { Input } from '@rneui/themed';
-import { getDatabase, push, ref, onValue, remove } from "firebase/database";
-import { db } from "../config/firebase";
 import styles from "../styles";
 import { Button } from "@rneui/base";
+import { push, ref } from "firebase/database";
+import { db } from "../config/firebase";
+
 
 export default function Name ({navigation}) {
     const [Name, setName] = useState('');
-
-    useEffect(() => {
-        onValue(ref(db, 'data/'), (snapshot) => {
-            const data = snapshot.val();
-            const keys = Object.keys(data);
-            const dataWithKeys = Object.values(data);
-            if (!data) {
-                setName('');}
-            else {
-                setName(dataWithKeys);
-            }
-        })},
-    []);
 
     const saveName = () => {
         push(
@@ -31,12 +19,8 @@ export default function Name ({navigation}) {
 
     return (
         <View styles ={styles.root}>
-            <ScrollView style={styles.scrollView}>
 
             <View style={{left: 270}} >
-                <Text 
-                    style={[styles.Normal, {fontWeight: 'bold', paddingEnd: 20, left: 45}]}
-                    onPress={() => navigation.navigate('Gender')}> → </Text>
             </View>
 
             <Text style={[styles.container, styles[`container_NUMBER`]]}> 1/6 </Text>
@@ -56,8 +40,6 @@ export default function Name ({navigation}) {
                 color={'#5481b8'}
                 style={{left: 20, right: 20, bottom: 20}}
                 accessibilityLabel="Next"/>
-
-            </ScrollView>
         </View>
     );
 }

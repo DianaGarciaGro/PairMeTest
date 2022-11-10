@@ -1,10 +1,20 @@
 import React, {useState } from "react";
-import { Text, View, ScrollView, StyleSheet } from "react-native";
-import CustomInput from "../components/CustomInput";
+import { Text, View } from "react-native";
 import styles from "../styles";
+import { Input } from '@rneui/themed';
+import { Button } from "@rneui/base";
+import { push, ref } from "firebase/database";
+import { db } from "../config/firebase";
 
 export default function Studies ({route, navigation}) {
     const [Bachelors, setBachelors] = useState('');
+
+    const saveBachelors = () => {
+        push(
+            ref(db, 'data/'),
+            { 'Bachelors': Bachelors });
+        navigation.navigate('Partner');
+    }
 
     return (
         <View styles ={styles.root}>
@@ -14,21 +24,24 @@ export default function Studies ({route, navigation}) {
                     style={[styles.Normal, {fontWeight: 'bold', padding: 5}]}
                     onPress={() => navigation.navigate('Nationality')}
                     > ← </Text>
-                <Text 
-                    style={[styles.Normal, {fontWeight: 'bold', paddingEnd: 12}]}
-                    onPress={() => navigation.navigate('Partner')}> → </Text>
             </View>
 
-            <ScrollView style={styles.scrollView}>
             <Text style={[styles.container, styles[`container_NUMBER`]]}> 5/6 </Text>
             <Text style={styles.QUESTION}> What's your Bachelor? </Text>
             <View style={styles.answer}>
-                <CustomInput
+                <Input
                     placeholder=" Bachelor's Degree "
                     value={Bachelors}
-                    setValue={setBachelors}/>
+                    onChangeText={text => setBachelors(text)}/>
             </View>
-            </ScrollView>
+
+            <Button
+                onPress={saveBachelors}
+                title="Next"
+                type="PRIMARY"
+                color={'#5481b8'}
+                style={{left: 20, right: 20, bottom: 20}}
+                accessibilityLabel="Next"/>
         </View>
     );
 }

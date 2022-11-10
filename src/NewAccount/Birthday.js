@@ -1,10 +1,20 @@
 import React, {useState } from "react";
-import { Text, View, ScrollView, StyleSheet } from "react-native";
-import CustomInput from "../components/CustomInput";
+import { Text, View } from "react-native";
 import styles from "../styles";
+import { Input } from '@rneui/themed';
+import { Button } from "@rneui/base";
+import { push, ref } from "firebase/database";
+import { db } from "../config/firebase";
 
 export default function Birthday ({navigation}) {
     const [Birthday, setBirthday] = useState('');
+
+    const saveBirthday = () => {
+        push(
+            ref(db, 'data/'),
+            { 'Birthday': Birthday });
+        navigation.navigate('Nationality');
+    }
 
     return (
         <View styles ={styles.root}>
@@ -14,22 +24,24 @@ export default function Birthday ({navigation}) {
                     style={[styles.Normal, {fontWeight: 'bold', padding: 5}]}
                     onPress={() => navigation.navigate('Gender')}
                     > ← </Text>
-                <Text 
-                    style={[styles.Normal, {fontWeight: 'bold', paddingEnd: 12}]}
-                    onPress={() => navigation.navigate('Nationality')}> → </Text>
             </View>
 
-
-            <ScrollView style={styles.scrollView}>
             <Text style={[styles.container, styles[`container_NUMBER`]]}> 3/6 </Text>
             <Text style={styles.QUESTION}> When do we celebrate your Birthday? </Text>
             <View style={styles.answer}>
-                <CustomInput
+                <Input
                     placeholder=" DD/MM/YYYY " 
                     value={Birthday}
-                    setValue={setBirthday}/>
+                    onChangeText={text => setBirthday(text)}/>
             </View>
-            </ScrollView>
+
+            <Button
+                onPress={saveBirthday}
+                title="Next"
+                type="PRIMARY"
+                color={'#5481b8'}
+                style={{left: 20, right: 20, bottom: 20}}
+                accessibilityLabel="Next"/>
         </View>
     );
 }

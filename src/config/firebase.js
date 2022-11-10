@@ -18,8 +18,8 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
-const database = getDatabase(app);
+const db = getDatabase(app);
 
-const db = initializeFirestore(app, {experimentalForceLongPolling: true});
+const database = initializeFirestore(app, {experimentalForceLongPolling: true});
     
-export { database, auth };
+export { db, auth };

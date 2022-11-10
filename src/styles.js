@@ -123,6 +123,7 @@ const styles = StyleSheet.create({
         color: '#5481b8',
         alignSelf: 'center',
         marginHorizontal: 10,
+        left: 10,
     },
     input: {
         fontSize: 20,
