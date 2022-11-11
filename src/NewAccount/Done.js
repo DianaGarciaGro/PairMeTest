@@ -12,7 +12,7 @@ export default function Done({ navigation }) {
             style={[styles.Button, {justifyContent: 'space-between'}]}
             title="   YES!   "
             color="#5481b8"
-            onPress={() => navigation.navigate('Profile')}
+            onPress={() => navigation.replace('Home')}
         />
         </View>
     );

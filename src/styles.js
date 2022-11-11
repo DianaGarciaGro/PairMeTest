@@ -103,6 +103,13 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: 'space-between',
     },
+    rowIcon: {
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        paddingLeft: 30,
+        paddingRight: 30,
+        paddingTop: 10,
+    },
     Tab: {
         position: 'absolute',
         bottom: 25,
@@ -140,6 +147,12 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         position: 'relative',
     },
+    buttonCard: {
+        borderRadius: 0,
+        marginLeft: 0,
+        marginRight: 0,
+        marginBottom: 0,
+    }
 });
 
 export default styles;

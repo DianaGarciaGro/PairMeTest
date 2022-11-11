@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import { Alert, Dimensions, Text, View } from "react-native";
+import { Alert, Text, View } from "react-native";
 import { Input } from '@rneui/themed';
-import CustomButton from "./components/CustomButton";
+import CustomButton from "../components/CustomButton";
 import { Feather } from '@expo/vector-icons';
-import styles from "./styles";
-import { auth } from "./config/firebase";
+import styles from "../styles";
+import { auth } from "../config/firebase";
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth';
 
 export default function Register({navigation}) {
@@ -22,6 +22,7 @@ export default function Register({navigation}) {
             })
             .then(() => {
                 alert("Account created successfully");
+                navigation.replace('New Account');
             })
             .catch((error) => {
                 alert(error);
@@ -32,8 +33,6 @@ export default function Register({navigation}) {
             const errorMessage = error.message;
             alert(errorMessage);
         });
-
-        navigation.navigate('Name');
     }
     
     const onTermsOfUsePressed = () => {
@@ -83,13 +82,6 @@ export default function Register({navigation}) {
                     value={password}
                     onChangeText={text => setPassword(text)}
                     secureTextEntry={true}/>
-            </View>
-
-            <View style={{left:50}}>
-                <CustomButton
-                    text= "Already have an account? →"
-                    onPress={() => navigation.navigate('Start')}
-                    type="TERTIARY"/>
             </View>
 
             <CustomButton
