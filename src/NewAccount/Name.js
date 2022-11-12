@@ -7,14 +7,14 @@ import { push, ref } from "firebase/database";
 import { db } from "../config/firebase";
 
 
-export default function Name ({navigation}) {
+export default function Name ({route, navigation}) {
     const [Name, setName] = useState('');
 
     const saveName = () => {
         push(
             ref(db, 'data/'),
             { 'Name': Name });
-        navigation.navigate('Gender');
+        navigation.navigate('Gender', {Name: Name});
     }
 
     return (

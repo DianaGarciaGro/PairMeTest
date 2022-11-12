@@ -13,7 +13,7 @@ export default function Partner ({route, navigation}) {
         push(
             ref(db, 'data/'),
             { 'Partner': PairCountry });
-        navigation.navigate('Done');
+        navigation.navigate('Done', {Partner: PairCountry});
     }
 
     return (

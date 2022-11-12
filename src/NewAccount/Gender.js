@@ -6,9 +6,7 @@ import { Button } from "@rneui/base";
 import { push, ref } from "firebase/database";
 import { db } from "../config/firebase";
 
-//Add multiple choice
-
-export default function Gender ({navigation}) {
+export default function Gender ({route, navigation}) {
 
     const [Female, setFemale] = useState(false);
     const [Male, setMale] = useState(false);
@@ -47,7 +45,7 @@ export default function Gender ({navigation}) {
         push(
             ref(db, 'data/'),
             { 'Gender': Gender });
-        navigation.navigate('Birthday');
+        navigation.navigate('Birthday', {Gender: Gender});
     }
 
     return (

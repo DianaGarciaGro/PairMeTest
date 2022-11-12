@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import styles from '../styles';
 
-export default function Done({ navigation }) {
+export default function Done({ route, navigation }) {
     return (
         <View style={styles.root}>
         <Text style={[styles.Title, {paddingTop: 180}]}> Congrats!</Text>

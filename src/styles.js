@@ -152,6 +152,80 @@ const styles = StyleSheet.create({
         marginLeft: 0,
         marginRight: 0,
         marginBottom: 0,
+    },
+    userInfoSection: {
+        paddingHorizontal: 30,
+        marginBottom: 25,
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+    },
+    smallTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#5481b8',
+    },
+    caption: {
+        fontSize: 17,
+        lineHeight: 14,
+        color: '#808080',
+        fontWeight: '500',
+        paddingTop: 5,
+    },
+    textSide: {
+        color: '#777777', 
+        marginLeft: 20
+    },
+    rowProfile: {
+        marginBottom: 10,
+        flexDirection: 'row',
+    },
+    infoBoxWrapper: {
+        borderBottomColor: '#dddddd',
+        borderBottomWidth: 1,
+        borderTopColor: '#dddddd',
+        borderTopWidth: 1,
+        flexDirection: 'row',
+        height: 100,
+    },
+    infoBox: {
+        width: '50%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    menuWrapper: {
+        marginTop: 10,
+    },
+    menuItem: {
+        flexDirection: 'row',
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+    },
+    menuItemText: {
+        color: '#777777',
+        marginLeft: 20,
+        fontWeight: '600',
+        fontSize: 16,
+        lineHeight: 26,
+    },
+    action: {
+        flexDirection: 'row',
+        marginTop: 10,
+        marginBottom: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#f2f2f2',
+        paddingBottom: 5,
+        paddingLeft: 15,
+    },
+    textInput: {
+        flex: 1,
+        paddingLeft: 10,
+        color: '#05375a',
+    },
+    smallText: {
+        color: 'black', 
+        marginLeft: 15
     }
 });
 

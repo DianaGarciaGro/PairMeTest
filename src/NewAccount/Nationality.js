@@ -13,7 +13,7 @@ export default function Nationality ({route, navigation}) {
         push(
             ref(db, 'data/'),
             { 'Nationality': Country });
-        navigation.navigate('Studies');
+        navigation.navigate('Studies', {Nationality: Country});
     }
 
     return (

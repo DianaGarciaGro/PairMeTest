@@ -13,7 +13,7 @@ export default function Studies ({route, navigation}) {
         push(
             ref(db, 'data/'),
             { 'Bachelors': Bachelors });
-        navigation.navigate('Partner');
+        navigation.navigate('Partner', {Studies: Bachelors});
     }
 
     return (

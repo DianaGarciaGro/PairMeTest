@@ -8,6 +8,7 @@ import Studies from './Studies';
 import Partner from './Partner';
 import Done from './Done';
 import PagesNav from '../pages/PagesNav';
+import ProfileEdit from '../pages/Profile/ProfileEdit';
 
 const Stack = createNativeStackNavigator();
 

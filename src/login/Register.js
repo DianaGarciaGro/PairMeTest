@@ -22,7 +22,7 @@ export default function Register({navigation}) {
             })
             .then(() => {
                 alert("Account created successfully");
-                navigation.replace('New Account');
+                navigation.replace('New Account', {username: username, email: email, password: password});
             })
             .catch((error) => {
                 alert(error);

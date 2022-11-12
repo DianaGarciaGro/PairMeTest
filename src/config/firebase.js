@@ -22,4 +22,4 @@ const db = getDatabase(app);
 
 const database = initializeFirestore(app, {experimentalForceLongPolling: true});
     
-export { db, auth };
+export { db, auth, firebaseConfig };

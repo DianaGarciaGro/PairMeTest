@@ -6,14 +6,14 @@ import { Button } from "@rneui/base";
 import { push, ref } from "firebase/database";
 import { db } from "../config/firebase";
 
-export default function Birthday ({navigation}) {
+export default function Birthday ({route, navigation}) {
     const [Birthday, setBirthday] = useState('');
 
     const saveBirthday = () => {
         push(
             ref(db, 'data/'),
             { 'Birthday': Birthday });
-        navigation.navigate('Nationality');
+        navigation.navigate('Nationality', {Birthday: Birthday});
     }
 
     return (

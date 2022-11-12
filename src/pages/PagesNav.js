@@ -1,12 +1,12 @@
 import { createBottomTabNavigator } from'@react-navigation/bottom-tabs'
 import { Feather } from '@expo/vector-icons';
-import Chat from './Chat';
-import Profile from './Profile';
 import Home from './Home';
+import ProfileStack from './Profile/ProfileStack';
+import Chat from './Chat';
 
 const Tab = createBottomTabNavigator();
 
-export default function PagesNav() {
+const PagesNav = ({route}) => {
 
   return (
     
@@ -26,12 +26,10 @@ export default function PagesNav() {
 
         <Tab.Screen name="Home"component={Home} options={{ headerShown: false, tabBarHideOnKeyboard:true }}/>
         <Tab.Screen name="Chat"component={Chat} options={{ headerShown: false, tabBarHideOnKeyboard:true }}/>
-        <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false, tabBarHideOnKeyboard:true }}/>
+        <Tab.Screen name="Profile" component={ProfileStack} options={{ headerShown: false, tabBarHideOnKeyboard:true }}/>
 
     </Tab.Navigator>
-
-  
-
-
   );
 }
+
+export default PagesNav;
