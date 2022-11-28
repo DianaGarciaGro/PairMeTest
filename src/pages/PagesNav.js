@@ -7,16 +7,6 @@ import MessagesStack from './Chat/MessagesStack';
 const Tab = createBottomTabNavigator();
 
 const PagesNav = ({route}) => {
-  const getTabBarVisibility = (route) => {
-    const routeName = route.state
-      ? route.state.routes[route.state.index].name
-      : '';
-
-      if (routeName === 'Chat') {
-        return false;
-      }
-      return true;
-  };
   
   return (
     
@@ -34,13 +24,9 @@ const PagesNav = ({route}) => {
         },
     })}>
 
-        <Tab.Screen name="Home"component={Home} options={{ headerShown: false, tabBarHideOnKeyboard:true }}/>
-        <Tab.Screen name="Messages"component={MessagesStack} 
-                    options={({route}) => ({
-                      tabBarVisible: getTabBarVisibility(route),
-                      headerShown: false, 
-                      tabBarHideOnKeyboard:true })}/>
-        <Tab.Screen name="Profile" component={ProfileStack} options={{ headerShown: false, tabBarHideOnKeyboard:true }}/>
+        <Tab.Screen name="Home"component={Home} options={{ headerShown: false }}/>
+        <Tab.Screen name="Messages"component={MessagesStack} options={{headerShown: false, tabBarHideOnKeyboard:true }}/>
+        <Tab.Screen name="Profile" component={ProfileStack} options={{ headerShown: false }}/>
 
     </Tab.Navigator>
   );

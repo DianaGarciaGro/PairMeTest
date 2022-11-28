@@ -11,13 +11,6 @@ import styles from '../../styles';
 
 console.log(auth);
 
-const signOutNow = () => {
-    signOut(auth).then(() => {
-       NativeModules.DevSettings.reload();
-    }).catch((error) => {
-    });
-}
-
 const openUpdate = () => {
     if (isVisible==true){
         setisVisible(false)
@@ -28,6 +21,7 @@ const openUpdate = () => {
   }; 
 
 const Profile = ({route, navigation}) => {
+    
     return (
     <SafeAreaView style={{flex: 1}}>
         <ScrollView>
@@ -109,23 +103,12 @@ const Profile = ({route, navigation}) => {
                 <Button 
                     icon= {
                         <Feather
-                            name='share'
-                            size={25}
-                            color='#5481b8'/>}
-                    title="Share with friend"
-                    type="clear"
-                    onPress={() => {}}/>
-            </View>
-            <View style={styles.menuItem}>
-                <Button 
-                    icon= {
-                        <Feather
                             name='log-out'
                             size={25}
                             color='#5481b8'/>}
                     title="Log out"
                     type="clear"
-                    onPress={signOutNow}/>
+                    onPress={() => navigation.navigate('Login')}/>
             </View>
         </View>
         </ScrollView>

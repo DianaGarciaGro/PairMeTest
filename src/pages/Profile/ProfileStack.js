@@ -24,7 +24,6 @@ export default function ProfileStack ({navigation}) {
             )
             }}/>
         <Stack.Screen name="ProfileEdit" component={ProfileEdit} options={{headerTitleAlign: 'center'}} />
-        <Stack.Screen name="DianaGarcia" component={DianaGarcia} />
     </Stack.Navigator>
   );
 };
