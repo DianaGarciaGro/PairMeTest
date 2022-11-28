@@ -1,11 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { firebaseConfig } from '../../config/firebase';
 import { querySnapshot } from 'firebase/firestore';
+import { signOut } from "firebase/auth";
+import { auth } from '../../config/firebase';
 import { View, Text, ScrollView, SafeAreaView} from 'react-native';
 import { Button } from '@rneui/themed';
 import Imagen from '../../components/Avatar';
 import { Feather } from '@expo/vector-icons';
 import styles from '../../styles';
+
+console.log(auth);
+
+const signOutNow = () => {
+    signOut(auth).then(() => {
+       NativeModules.DevSettings.reload();
+    }).catch((error) => {
+    });
+}
+
+const openUpdate = () => {
+    if (isVisible==true){
+        setisVisible(false)
+    }else{
+        setisVisible(true)
+        setNewName('');
+    }
+  }; 
 
 const Profile = ({route, navigation}) => {
     return (
@@ -15,7 +35,7 @@ const Profile = ({route, navigation}) => {
             <View style={{flexDirection: 'row', marginTop: 15, paddingTop: 20}}>
                 <Imagen/>
                 <View style={{marginLeft: 20}}>
-                    <Text style={[styles.title, {marginTop: 15, marginBottom: 5}]}>Diana García</Text>
+                    <Text style={[styles.title, {marginTop: 15, marginBottom: 5}]}>{auth.currentUser.displayName}</Text>
                     <Text style={styles.caption}>@dianagarcia</Text>
                 </View>
             </View>
@@ -105,7 +125,7 @@ const Profile = ({route, navigation}) => {
                             color='#5481b8'/>}
                     title="Log out"
                     type="clear"
-                    onPress={() => navigation.navigate()}/>
+                    onPress={signOutNow}/>
             </View>
         </View>
         </ScrollView>

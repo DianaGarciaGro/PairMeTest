@@ -3,6 +3,16 @@ import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, TextInput } 
 import { Feather } from '@expo/vector-icons';
 import CustomButton from '../../components/CustomButton';
 
+const updateName=()=>{
+    updateProfile(auth.currentUser, {
+    displayName: newName
+  }).then(() => {
+    setisVisible(false)
+  }).catch((error) => {
+    setisVisible(false)
+  });
+}
+
 const ProfileEdit = ({navigation}) => {
 
     return (
@@ -83,7 +93,7 @@ const ProfileEdit = ({navigation}) => {
                 </View>
                 <CustomButton
                     text="Save"
-                    onPress={() => {}}/>
+                    onPress={updateName}/>
         </View>
       </View>
     );

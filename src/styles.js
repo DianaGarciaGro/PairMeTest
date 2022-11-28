@@ -12,6 +12,13 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         alignSelf: 'center',
     },
+    Image: {
+        flex: 1, 
+        width: 500,
+        height: 90,
+        resizeMode: 'contain',
+        alignItems: 'center'
+    },
     LogoPNG: {
         width: "70%",
         maxWidth: 300,
@@ -226,7 +233,20 @@ const styles = StyleSheet.create({
     smallText: {
         color: 'black', 
         marginLeft: 15
-    }
+    },
+    textbox: {
+        marginTop: 5,
+        marginBottom: 5,
+        fontSize:18,
+        width: 200,
+        borderColor: 'gray',
+        borderWidth: 1
+    },
+    listcontainer: {
+        flexDirection: 'row',
+        backgroundColor: '#fff',
+        alignItems: 'center'
+    },
 });
 
 export default styles;

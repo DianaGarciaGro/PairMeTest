@@ -17,8 +17,8 @@ const onSave = () => {
     return (
         <View style={styles.root}>
         <Card>
-        <Card.Title>Diana García</Card.Title>
-        <Card.Divider />
+          <Card.Title>Diana García</Card.Title>
+          <Card.Divider />
         <Card.Image
           style={{ padding: 0 }}
           source={{uri: 'https://img.freepik.com/premium-vector/african-american-woman-avatar-with-glasses-portrait-young-girl-vector-illustration-face_217290-363.jpg?w=2000'}}/>
@@ -110,6 +110,33 @@ const onSave = () => {
         <Text style={styles.smallText}> Honesty, Modesty, Freedom </Text>
         <Text style={styles.smallTitle}> Interests </Text>
         <Text style={styles.smallText}> PropTech, Real State, Technology </Text>
+        <View style={styles.rowIcon}>
+        <Feather
+            name= 'x-circle' 
+            size= {30} 
+            color= 'red'
+            onPress={onRemove}/>
+          <Feather
+            name= 'check-circle' 
+            size= {30} 
+            color= 'green'
+            onPress={onSave}/>
+        </View>
+      </Card>
+
+      <Card>
+        <Card.Title>Christy Alex</Card.Title>
+        <Card.Divider />
+        <Card.Image
+          style={{ padding: 0 }}
+          source={{uri: 'https://thumbs.dreamstime.com/b/man-profile-cartoon-smiling-vector-illustration-graphic-design-135443492.jpg'}}/>
+        <Text style={{ marginBottom: 10 }}>
+          Would love to create an app to help people have a perfect morning routine. That's the key to have a great day and accomplish your goals.
+        </Text>
+        <Text style={styles.smallTitle}> Values </Text>
+        <Text style={styles.smallText}> Respect, Modesty, Freedom </Text>
+        <Text style={styles.smallTitle}> Interests </Text>
+        <Text style={styles.smallText}> Mindfullness, Nature, Technology </Text>
         <View style={styles.rowIcon}>
         <Feather
             name= 'x-circle' 

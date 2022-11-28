@@ -12,7 +12,8 @@ export default function ProfileStack ({navigation}) {
     <Stack.Navigator screenOptions={{ headerStyle: { backgroundColor: '#fff', elevation: 0 }, headerTintColor: '#000' }}>
         <Stack.Screen name="Profile" component={Profile} 
           options={{ 
-            title: '', 
+            title: 'Profile', 
+            headerTitleAlign: 'center',
             headerRight: () => (
               <Feather
                 name='edit'
@@ -22,7 +23,7 @@ export default function ProfileStack ({navigation}) {
                 />
             )
             }}/>
-        <Stack.Screen name="ProfileEdit" component={ProfileEdit} />
+        <Stack.Screen name="ProfileEdit" component={ProfileEdit} options={{headerTitleAlign: 'center'}} />
         <Stack.Screen name="DianaGarcia" component={DianaGarcia} />
     </Stack.Navigator>
   );
