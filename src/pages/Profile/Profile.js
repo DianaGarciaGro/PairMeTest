@@ -1,27 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { firebaseConfig } from '../../config/firebase';
+import { database, db, firebaseConfig } from '../../config/firebase';
 import { querySnapshot } from 'firebase/firestore';
-import { signOut } from "firebase/auth";
+import { AuthCredential, signOut } from "firebase/auth";
 import { auth } from '../../config/firebase';
 import { View, Text, ScrollView, SafeAreaView} from 'react-native';
 import { Button } from '@rneui/themed';
 import Imagen from '../../components/Avatar';
 import { Feather } from '@expo/vector-icons';
 import styles from '../../styles';
+import { onValue } from 'firebase/database';
+import { ref } from "firebase/database";
 
 console.log(auth);
 
-const openUpdate = () => {
-    if (isVisible==true){
-        setisVisible(false)
-    }else{
-        setisVisible(true)
-        setNewName('');
-    }
-  }; 
-
 const Profile = ({route, navigation}) => {
-    
+    const [follow, setFollow] = useState(0);
+    const [userInfo, setUserInfo] = useState([]);
+
+    useEffect(() => {
+        onValue(ref(db, 'User/'), (snapshot) => {
+          const data = snapshot.val();
+          console.log(data)
+          if(!data) {
+          setIndexes([]);    
+          }else{
+            setUserInfo(Object.values(data));
+          }
+        })
+      }, []);
+
+      console.log(userInfo);
+
     return (
     <SafeAreaView style={{flex: 1}}>
         <ScrollView>
@@ -41,14 +50,15 @@ const Profile = ({route, navigation}) => {
                     name='map-pin'
                     size={20}
                     color='#5481b8'/>
-                <Text style={styles.textSide}>México</Text>
+{/*This is where I want to display the Nationality from the database*/}
+                <Text style={styles.textSide}>{userInfo.Nationality}</Text> 
             </View>
             <View style={styles.rowProfile}>
                 <Feather
                     name='mail'
                     size={20}
                     color='#5481b8'/>
-                <Text style={styles.textSide}>dianagarciaguerrero@hotmail.com</Text>
+                <Text style={styles.textSide}>{auth.currentUser.email}</Text>
             </View>
             <View style={styles.rowProfile}>
                 <Feather
@@ -78,7 +88,7 @@ const Profile = ({route, navigation}) => {
 
         <View style={styles.infoBoxWrapper}>
             <View style={styles.infoBox}>
-                <Text style={styles.title}> 10 </Text>
+                <Text style={styles.title}> {follow} </Text>
                 <Text style={styles.caption}> Follows </Text>
             </View>
             <View style={styles.infoBox}>
@@ -97,7 +107,7 @@ const Profile = ({route, navigation}) => {
                             color='#5481b8'/>}
                     title="Follow"
                     type="clear"
-                    onPress={() => {}}/>
+                    onPress={() => {setFollow(follow+1)}}/>
             </View>
             <View style={styles.menuItem}>
                 <Button 
