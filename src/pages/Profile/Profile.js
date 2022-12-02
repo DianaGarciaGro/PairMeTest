@@ -28,7 +28,7 @@ const Profile = ({route, navigation}) => {
           }
         })
       }, []);
-
+//push method
       console.log(userInfo);
 
     return (
@@ -50,8 +50,7 @@ const Profile = ({route, navigation}) => {
                     name='map-pin'
                     size={20}
                     color='#5481b8'/>
-{/*This is where I want to display the Nationality from the database*/}
-                <Text style={styles.textSide}>{userInfo.Nationality}</Text> 
+                <Text style={styles.textSide}>México</Text> 
             </View>
             <View style={styles.rowProfile}>
                 <Feather
@@ -79,7 +78,7 @@ const Profile = ({route, navigation}) => {
                     name='linkedin'
                     size={20}
                     color='#5481b8'/>
-                <Text style={styles.textSide}> linkedin </Text>
+                <Text style={styles.textSide}> https://www.linkedin.com/in/dianagarciagro/ </Text>
             </View>
         </View>
         <View>
