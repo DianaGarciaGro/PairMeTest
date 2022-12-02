@@ -11,7 +11,7 @@ const onRemove = () => {
 }
 
 const onSave = () => {
-    Alert.alert('Save');
+    Alert.alert('You match! Now you can chat with this person');
 }
 
     return (
