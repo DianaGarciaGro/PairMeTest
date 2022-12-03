@@ -1,4 +1,6 @@
 # PairMeTest
+Video demonstration of point of view in the phone and code explanation in VisualStudio: https://photos.app.goo.gl/zjK5gmirzGZa4iZC9
+
 Description of some of the technologies used:
 @rneui/base
   {Avatar} for each profile created
